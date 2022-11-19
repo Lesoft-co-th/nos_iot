@@ -1,17 +1,95 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> ตั้งเวลา </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label>ปั๊มน้ำ</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>ตั้งเวลา 1</ion-label>
+    <ion-note slot="end" id="time1_1">{{time1_1| date: 'HH:mm'}}</ion-note>
+    <ion-modal trigger="time1_1" [cssClass]="'bottom-end'">
+      <ng-template>
+        <ion-datetime
+          presentation="time"
+          [(ngModel)]="time1_1"
+          size="cover"
+          [showDefaultButtons]="true"
+          (ionChange)="_setTime1('start',$event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <ion-label slot="end">ถึง</ion-label>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-note slot="end" id="time1_2">{{time1_2| date: 'HH:mm'}}</ion-note>
+
+    <ion-modal trigger="time1_2" [cssClass]="'bottom-end'">
+      <ng-template>
+        <ion-datetime
+          presentation="time"
+          [(ngModel)]="time1_2"
+          size="cover"
+          [showDefaultButtons]="true"
+          (ionChange)="_setTime1('end',$event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <ion-item>
+    <ion-label>ตั้งเวลา 2</ion-label>
+    <ion-note slot="end" id="time1_1">{{time1_1| date: 'HH:mm'}}</ion-note>
+    <ion-modal trigger="time1_1" [cssClass]="'bottom-end'">
+      <ng-template>
+        <ion-datetime
+          presentation="time"
+          [(ngModel)]="time1_1"
+          size="cover"
+          [showDefaultButtons]="true"
+          (ionChange)="_setTime1('start',$event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <ion-label slot="end">ถึง</ion-label>
+
+    <ion-note slot="end" id="time1_2">{{time1_2| date: 'HH:mm'}}</ion-note>
+
+    <ion-modal trigger="time1_2" [cssClass]="'bottom-end'">
+      <ng-template>
+        <ion-datetime
+          presentation="time"
+          [(ngModel)]="time1_2"
+          size="cover"
+          [showDefaultButtons]="true"
+          (ionChange)="_setTime1('end',$event)"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <ion-item>
+    <ion-label>ตั้งแบบชม. 1</ion-label>
+    <ion-input
+      type="number"
+      slot="end"
+      style="text-align: right; width: 150px"
+      placeholder="0"
+      size="2"
+    ></ion-input>
+    <ion-label slot="end">ชม.</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>ตั้งแบบชม. 2</ion-label>
+    <ion-input
+      type="number"
+      slot="end"
+      style="text-align: right; width: 150px"
+      placeholder="0"
+      size="2"
+    ></ion-input>
+    <ion-label slot="end">ชม.</ion-label>
+    <ion-toggle slot="end"></ion-toggle>
+  </ion-item>
 </ion-content>
