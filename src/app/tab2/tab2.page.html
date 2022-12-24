@@ -4,92 +4,132 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-label>ปั๊มน้ำ</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label>ตั้งเวลา 1</ion-label>
-    <ion-note slot="end" id="time1_1">{{time1_1| date: 'HH:mm'}}</ion-note>
-    <ion-modal trigger="time1_1" [cssClass]="'bottom-end'">
-      <ng-template>
-        <ion-datetime
-          presentation="time"
-          [(ngModel)]="time1_1"
-          size="cover"
-          [showDefaultButtons]="true"
-          (ionChange)="_setTime1('start',$event)"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
-    <ion-label slot="end">ถึง</ion-label>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="subtitle"
+        ><ion-toggle
+          mode="ios"
+          [(ngModel)]="status_sw1"
+          (ionChange)="_setToggle()"
+        ></ion-toggle
+      ></ion-card-title>
+      <ion-card-subtitle> ตั้งเวลาช่วงที่ 1 </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      <ion-note slot="end" id="time1_1">{{timestart1}}</ion-note>
+      <ion-modal trigger="time1_1" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="timestart1"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting1()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-label>ถึง</ion-label>
+      <ion-note slot="end" id="time1_2">{{timeend1}}</ion-note>
+      <ion-modal trigger="time1_2" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="timeend1"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting1()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="subtitle"
+        ><ion-toggle
+          mode="ios"
+          [(ngModel)]="status_sw2"
+          (ionChange)="_setToggle()"
+        ></ion-toggle
+      ></ion-card-title>
+      <ion-card-subtitle> ตั้งเวลาช่วงที่ 2 </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      <ion-note slot="end" id="time2_1">{{timestart2}}</ion-note>
+      <ion-modal trigger="time2_1" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="timestart2"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting2()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+      <ion-label>ถึง</ion-label>
+      <ion-note slot="end" id="time2_2">{{timeend2}}</ion-note>
+      <ion-modal trigger="time2_2" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="timeend2"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting2()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> ตั้งเวลา 1 </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      <ion-note slot="end" id="time1">{{time1}}</ion-note>
+      <ion-modal trigger="time1" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="time1"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting3()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
 
-    <ion-note slot="end" id="time1_2">{{time1_2| date: 'HH:mm'}}</ion-note>
+      <ion-toggle
+        mode="ios"
+        [(ngModel)]="status_sw3"
+        (ionChange)="_setToggle()"
+      ></ion-toggle>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> ตั้งเวลา 2 </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="content">
+      <ion-note slot="end" id="time2">{{time2}}</ion-note>
+      <ion-modal trigger="time2" [cssClass]="'bottom-end'">
+        <ng-template>
+          <ion-datetime
+            presentation="time"
+            [(ngModel)]="time2"
+            size="cover"
+            [showDefaultButtons]="true"
+            (ionChange)="_setting4()"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
 
-    <ion-modal trigger="time1_2" [cssClass]="'bottom-end'">
-      <ng-template>
-        <ion-datetime
-          presentation="time"
-          [(ngModel)]="time1_2"
-          size="cover"
-          [showDefaultButtons]="true"
-          (ionChange)="_setTime1('end',$event)"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-item>
-  <ion-item>
-    <ion-label>ตั้งเวลา 2</ion-label>
-    <ion-note slot="end" id="time1_1">{{time1_1| date: 'HH:mm'}}</ion-note>
-    <ion-modal trigger="time1_1" [cssClass]="'bottom-end'">
-      <ng-template>
-        <ion-datetime
-          presentation="time"
-          [(ngModel)]="time1_1"
-          size="cover"
-          [showDefaultButtons]="true"
-          (ionChange)="_setTime1('start',$event)"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
-    <ion-label slot="end">ถึง</ion-label>
-
-    <ion-note slot="end" id="time1_2">{{time1_2| date: 'HH:mm'}}</ion-note>
-
-    <ion-modal trigger="time1_2" [cssClass]="'bottom-end'">
-      <ng-template>
-        <ion-datetime
-          presentation="time"
-          [(ngModel)]="time1_2"
-          size="cover"
-          [showDefaultButtons]="true"
-          (ionChange)="_setTime1('end',$event)"
-        ></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-item>
-  <ion-item>
-    <ion-label>ตั้งแบบชม. 1</ion-label>
-    <ion-input
-      type="number"
-      slot="end"
-      style="text-align: right; width: 150px"
-      placeholder="0"
-      size="2"
-    ></ion-input>
-    <ion-label slot="end">ชม.</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label>ตั้งแบบชม. 2</ion-label>
-    <ion-input
-      type="number"
-      slot="end"
-      style="text-align: right; width: 150px"
-      placeholder="0"
-      size="2"
-    ></ion-input>
-    <ion-label slot="end">ชม.</ion-label>
-    <ion-toggle slot="end"></ion-toggle>
-  </ion-item>
+      <ion-toggle
+        mode="ios"
+        [(ngModel)]="status_sw4"
+        (ionChange)="_setToggle()"
+      ></ion-toggle>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

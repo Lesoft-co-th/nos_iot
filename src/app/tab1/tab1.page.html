@@ -5,16 +5,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="./../../assets/solar_16x9_2.jpg" />
+  <!-- <img src="./../../assets/solar_16x9_2.jpg" /> -->
 
   <ion-grid>
     <ion-row>
       <ion-col>
         <img width="80" src="./../../assets/flexible.png" />
       </ion-col>
-      <ion-col class="col"
-        ><ion-label>เชื่อมต่อได้</ion-label>
+      <ion-col class="col">
+        <ion-label>{{con?"เชื่อมได้":"เชื่อมไม่ได้"}}</ion-label>
         <ion-label style="color: #8994a3">NodeMCU ESP32</ion-label>
+      </ion-col>
+    </ion-row>
+    <hr style="color: #8994a3; background-color: #8994a3" />
+    <ion-row>
+      <ion-col>
+        <ion-col> <ion-label class="text">ปั๊มน้ำ</ion-label> </ion-col>
+      </ion-col>
+      <ion-col class="col">
+        <ion-toggle mode="i" mode="ios"></ion-toggle>
       </ion-col>
     </ion-row>
     <hr style="color: #8994a3; background-color: #8994a3" />
@@ -23,7 +32,7 @@
         <img width="80" src="./../../assets/14568259.jpg" />
       </ion-col>
       <ion-col class="col"
-        ><ion-label>18 V</ion-label>
+        ><ion-label>{{Volt}} V</ion-label>
         <ion-label style="color: #8994a3">แรงดันไฟฟ้า</ion-label>
       </ion-col>
     </ion-row>
@@ -33,7 +42,7 @@
         <img width="80" src="./../../assets/voltmeter-power-svgrepo-com.svg" />
       </ion-col>
       <ion-col class="col">
-        <ion-label>2 Amp</ion-label>
+        <ion-label>{{Amp}} Amp</ion-label>
         <ion-label style="color: #8994a3">กระแสไฟฟ้า</ion-label>
       </ion-col>
     </ion-row>
@@ -43,7 +52,7 @@
         <img width="80" src="./../../assets/sensorflow.png" />
       </ion-col>
       <ion-col class="col">
-        <ion-label>2 L/hour</ion-label>
+        <ion-label>{{water}} L/hour</ion-label>
         <ion-label style="color: #8994a3">เซนเซอร์วัดน้ำไหล</ion-label>
       </ion-col>
     </ion-row>

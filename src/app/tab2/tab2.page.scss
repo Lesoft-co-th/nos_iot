@@ -1,3 +1,28 @@
 .ft {
   height: 80px;
 }
+
+ion-card-header.ios {
+  display: flex;
+  flex-flow: column-reverse;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+}
+.subtitle {
+  display: flex;
+  flex-direction: row-reverse;
+}
+ion-modal {
+  &.bottom-end {
+    align-items: flex-end;
+    --height: auto;
+    .ion-page {
+      position: relative;
+      display: block;
+      contain: content;
+    }
+  }
+}
