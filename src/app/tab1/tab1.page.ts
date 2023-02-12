@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
-
+import { AppserviceService } from '../appservice.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -11,28 +11,26 @@ export class Tab1Page {
   public Amp = 0;
   public water = 0;
   public con: any;
-  constructor(public fb: AngularFireDatabase) {
-    this.fb
-      .object('set/value')
-      .valueChanges()
-      .subscribe((value: any) => {
-        console.log(value);
-        this.Volt = value.split(',')[0];
-        this.Amp = value.split(',')[1];
-        this.water = value.split(',')[2];
-      });
-    this.fb
-      .object('con')
-      .valueChanges()
-      .subscribe((value: any) => {
-        console.log(value);
-        if (value == 1) {
-          this.con = true;
-        } else {
-          this.con = false;
-        }
-      });
+  public status_sw: any = false;
+  constructor(
+    public fb: AngularFireDatabase,
+    public service: AppserviceService
+  ) {
+    this.service.message((val: any) => {
+      console.log(val);
+      
+      if (val.topic === '/waterpumpRMUTI/waterpumpRMUTI/sensor') {
+      
+        this.Volt = val.message.split(',')[0];
+        this.Amp = val.message.split(',')[1];
+        this.water = val.message.split(',')[2];
+      }
+    });
   }
 
-  public openPumpwater = () => {};
+  public openPumpwater = () => {
+    console.log(this.status_sw);
+
+    this.service.publish(`/Pump`, `${this.status_sw == true ? '1' : '0'}`);
+  };
 }
